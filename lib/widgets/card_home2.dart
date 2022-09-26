@@ -16,9 +16,9 @@ class Card2Screen extends StatelessWidget {
     return SizedBox(
       width: size.width*0.45,
       height: 120,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        child: Card(
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 10,
           color: colorsText,
               child: Column(
                crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,6 @@ class Card2Screen extends StatelessWidget {
                 ],
               ),
         ),
-      ),
     );
   }
 }

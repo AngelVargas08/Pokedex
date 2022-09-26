@@ -17,9 +17,8 @@ class Card1Screen extends StatelessWidget {
 
       width: size.width*0.9,
       height: 140,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(25),
-          child: Card(
+        child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             color: colorText,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -35,7 +34,6 @@ class Card1Screen extends StatelessWidget {
                 ],
               ),
           ),
-        ),
 
     );
   }
