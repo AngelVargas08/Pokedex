@@ -13,10 +13,18 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pokedex',
-      home:  HomeScreen(),
+      initialRoute: 'home',
+      routes: {
+        'home'    :(_) => const HomeScreen(),
+        'pokemon' :(_) => const PokemosScreen(),
+        'items'   :(_) => const ItemsScreen(),
+        'favorite':(_) => const FavoritesScreen(),
+        'moves'   :(_) => const MovesScreen(),
+        'types'   :(_) => const TypesScreen(),
+      },
      
     );
   }

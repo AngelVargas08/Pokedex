@@ -9,20 +9,27 @@ class TextFieldHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(25),
-          child: const TextField(
+        child: const TextField(
                decoration: InputDecoration(
-                
-               fillColor: Colors.amber,
-               prefixIcon: Icon(Icons.search, size: 35, color: Colors.white,),
-               suffixIcon: Icon(Icons.mic, size: 35, color: Colors.white,),
-               border: OutlineInputBorder(),        
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderSide: BorderSide(color: Colors.white,width: 1)
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderSide: BorderSide(width: 1)
+                ),
+              
+               
+               prefixIcon: Icon(Icons.search, size: 35, color: Colors.grey,),
+               suffixIcon: Icon(Icons.mic, size: 35, color: Colors.grey,),
+                filled: true,
+                fillColor: Colors.black54,
                 labelText: 'Search pokemons, items etc',
-                labelStyle: TextStyle(color: Colors.grey)
+                labelStyle: TextStyle(color: Colors.grey),
+                
               )
           ),
-        ),
 
     );
   }
