@@ -1,5 +1,7 @@
 
 
+
+
 import 'package:flutter/material.dart';
 
 class Card1Screen extends StatelessWidget {
@@ -34,14 +36,23 @@ class Card1Screen extends StatelessWidget {
                   children:  [
                   // Padding(padding: EdgeInsets.only(right: 20,)),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
                       children: [
-                        const Padding(padding: EdgeInsets.only(right: 15,bottom: 70)),
-                        Text(arg,
-                        style: const TextStyle(
-                        fontSize: 45, fontWeight: FontWeight.bold, color: Colors.white)
-                        ),
 
-                        //Image(image: NetworkImage(''))
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10,top: 50),
+                          child: Text(arg,
+                          
+                          style: const TextStyle(
+                          fontSize: 45, fontWeight: FontWeight.bold, color: Colors.white)
+                          ),
+                        ),
+                        
+                          const Image(image:  AssetImage('assets/pokeball.png'),
+                        
+                          width: 120,
+                        )
                       ],
                     )
                   ],

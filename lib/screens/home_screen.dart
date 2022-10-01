@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
-        title: const Text(''),
+       
         elevation: 0,
         actions: [
           IconButton(
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
           color: Colors.grey[900],
           child: Column(
             children:  [
-                
+              
               const Padding(padding: EdgeInsets.only(top: 25, )),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15,),
               const TextFieldHome(),
               const SizedBox(height: 25,),
-              const Card1Screen(arg: 'Pokémon', colorText:Color.fromARGB(255, 115, 182, 117), route: 'pokemon',),
+              const Card1Screen(arg: 'Pokémon', route: 'pokemon', colorText:Color.fromARGB(255, 115, 182, 117), ),
               const SizedBox(height: 15,),
               Row(
                 

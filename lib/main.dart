@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 
 
+
 import 'package:pokedex/screens/screens.dart';
+import 'package:provider/provider.dart';
+import 'package:pokedex/providers/pokemon_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppState());
+}
+
+
+class AppState extends StatelessWidget {
+  const AppState({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=> PokemonProvider(), lazy: false,)
+      ],
+      child: const MyApp(),
+      );
+  }
 }
 
 class MyApp extends StatelessWidget {
