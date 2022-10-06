@@ -67,26 +67,29 @@ class GridViewPokemon extends StatelessWidget {
                       
                       alignment: Alignment.centerLeft,
                       
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: Column(
+                      child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ListView.builder(
                               shrinkWrap: true,
                               itemCount: 2,
                               itemBuilder: (context, index) {
-                                return Container(
-                                   child: Container(
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Container(
+                                                                   
                                     color: Colors.white,
-                                    child: Text('Poison')),
+                                     child: const  Padding(
+                                       padding:  EdgeInsets.only(left: 5),
+                                       child: Text('Poison'),
+                                     ),
+                                  ),
                                 );
                               }, 
                               
                                )
                              ],
                         ),
-                      ),
                     ),
 
                     Align(
