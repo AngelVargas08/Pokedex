@@ -19,6 +19,7 @@ class GridViewPokemon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Expanded(
       
       child: GridView.builder(
@@ -30,8 +31,8 @@ class GridViewPokemon extends StatelessWidget {
           itemCount: pokemons.length, 
           itemBuilder: (context, index) {
               final pokemon = pokemons[index];
+              
               final type = pokemon.type!;
-              final x = type.toList();
               print(type);
              
               
@@ -67,33 +68,24 @@ class GridViewPokemon extends StatelessWidget {
                         
                   
                         Align(
-                          
                           alignment: Alignment.centerLeft,
-                          
                           child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: pokemon.type?.length,
-                                  itemBuilder: (context, index) {
-                                    return ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Container(
-                                                                       
-                                        color: Colors.white,
-                                         child:  Padding(
-                                           padding:  EdgeInsets.only(left: 5),
-                                           child: Text(x.toString()),
-                                         ),
-                                      ),
-                                    );
-                                  }, 
-                                  
-                                   )
-                                 ],
-                            ),
-                        ),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: type.map((type) {
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(    
+                                  width: double.infinity,                          
+                                  color: Colors.white,
+                                    child:  Padding(
+                                      padding:  const EdgeInsets.only(left: 5),
+                                      child: Text(type.name),
+                                    ),
+                                ),
+                              );
+                            }).toList(),
+                      ),
+                      ),
                   
                         Align(
                           alignment: Alignment.bottomRight,
