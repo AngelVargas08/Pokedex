@@ -71,7 +71,7 @@ class GridViewPokemon extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: type.map((type) {
+                            children: type.map((e) {
                               return ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Container(    
@@ -79,7 +79,7 @@ class GridViewPokemon extends StatelessWidget {
                                   color: Colors.white,
                                     child:  Padding(
                                       padding:  const EdgeInsets.only(left: 5),
-                                      child: Text(type.name),
+                                      child: Text(e.name),
                                     ),
                                 ),
                               );
