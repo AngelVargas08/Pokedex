@@ -21,40 +21,64 @@ class DetailsScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         color: Colors.blueAccent,
-        child: Column(
+        child: Stack(
           children: [
-              Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: size.height*0.41,
-                    //color: Colors.red,
-                  ),
+             SizedBox(
+                  height: size.height*0.34,
+                  child: Column(
 
-                  Hero(
-                    tag: pokemon.id,
-                    child: FadeInImage(
-                      fit: BoxFit.contain,
-                      placeholder:AssetImage('assets/logo.png'),
-                       image: NetworkImage(pokemon.img.toString(),scale: 0.5) 
-                       ),
+                    children: [
+                      const Padding(padding: EdgeInsets.only(top: 15)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(pokemon.name.toString(),
+                          style: const TextStyle(
+                            fontSize: 50,
+                             fontWeight: FontWeight.bold, 
+                             color: Colors.white),
+                          ),
+                          Text('#${pokemon.num}', style: const TextStyle(
+                            fontSize: 30,
+                             fontWeight: FontWeight.bold, 
+                             color: Colors.white
+                          ),)
+                        ],
+                      )   
+                    ],
                   ),
-                     
-                     
-                ],
-              ),
+                ),
                 
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: Container(
-                    
-                    width: double.infinity,
-                    height: size.height*0.5,
-                    color: Colors.black87,
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(40), 
+                          topRight: Radius.circular(40)),
+                        child: Container(
+                          width: double.infinity,
+                          height: size.height*0.5,
+                          color: Colors.black87,
+                          child: Text('asd')
+                        ),
+                      ),
+                    ),
                   ),
-                )
+                  
+                Align(
+                  alignment: Alignment.center,
+                  child: Hero(
+                   tag: pokemon.id,
+                   child: FadeInImage(
+                   placeholder:const AssetImage('assets/logo.png'),
+                   image: NetworkImage(pokemon.img.toString(), scale: 0.4) 
+                    ),
+                  ),
+                ),
           ],
-        ),
+        )
       )
     );
   }
