@@ -24,12 +24,10 @@ class PokemonProvider extends ChangeNotifier{
     var url =
       Uri.https(_baseUrl, '/Biuni/PokemonGO-Pokedex/master/pokedex.json', );
 
-  // Await the http get response, then decode the json-formatted response.
+
   final response = await http.get(url);
   final pokemonResponse = Pokemon.fromJson(response.body);
- // final Map<String, dynamic> decodedData = json.decode(response.body);
-
-  //print(pokemonResponse.pokemon[24].img);
+ 
 
   onDisplayPokemon = pokemonResponse.pokemon;
   

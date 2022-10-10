@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         'favorite':(_) => const FavoritesScreen(),
         'moves'   :(_) => const MovesScreen(),
         'types'   :(_) => const TypesScreen(),
+        'details'   :(_) => const DetailsScreen(),
       },
      
     );
