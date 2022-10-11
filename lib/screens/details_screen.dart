@@ -69,6 +69,7 @@ class DetailsScreen extends StatelessWidget {
                   
                 Align(
                   alignment: Alignment.center,
+                  
                   child: Hero(
                    tag: pokemon.id,
                    child: FadeInImage(

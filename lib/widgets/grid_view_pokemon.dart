@@ -31,9 +31,8 @@ class GridViewPokemon extends StatelessWidget {
           itemCount: pokemons.length, 
           itemBuilder: (context, index) {
               final pokemon = pokemons[index];
-              
               final type = pokemon.type!;
-              print(type);
+              
              
               
             return  GestureDetector(
@@ -55,9 +54,10 @@ class GridViewPokemon extends StatelessWidget {
                               Text(pokemon.name.toString(),style:  const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                               maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                               ),
                               Text('#${pokemon.num}',style: const TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                               ),
                   
                             ],
@@ -65,27 +65,30 @@ class GridViewPokemon extends StatelessWidget {
                             
                         ),
                   
-                        
-                  
-                        Align(
-                          alignment: Alignment.centerLeft,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: type.map((e) {
-                              return ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Container(    
-                                  width: double.infinity,                          
-                                  color: Colors.white,
-                                    child:  Padding(
-                                      padding:  const EdgeInsets.only(left: 5),
-                                      child: Text(e.name),
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                              children: type.map((e) {
+                                return  ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(vertical: 2),
+                                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                                    color: Colors.white30,
+                                    child: Text(e.name,style: const 
+                                      TextStyle(color: Colors.white, fontWeight: FontWeight.bold,
+                                      fontSize: 13
+                                      ),)
                                     ),
-                                ),
-                              );
-                            }).toList(),
+                                );
+                                  
+                              }).toList(),
                       ),
-                      ),
+                        ),
+                  
+                       
                   
                         Align(
                           alignment: Alignment.bottomRight,
@@ -105,7 +108,7 @@ class GridViewPokemon extends StatelessWidget {
                           child: FadeInImage(
                             placeholder: const AssetImage('assets/logo.png'),
                             image:  NetworkImage(pokemon.img.toString()),
-                            width: size.width*0.25,
+                            width: size.width*0.27,
                             fit: BoxFit.cover,
                             ),
                         ),
