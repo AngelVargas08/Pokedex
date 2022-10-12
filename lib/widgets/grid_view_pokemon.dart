@@ -75,7 +75,8 @@ class GridViewPokemon extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15),
                                   child: Container(
                                     margin: const EdgeInsets.symmetric(vertical: 2),
-                                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+                                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5
+                                    ),
                                     color: Colors.white30,
                                     child: Text(e.name,style: const 
                                       TextStyle(color: Colors.white, fontWeight: FontWeight.bold,

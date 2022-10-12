@@ -18,6 +18,7 @@ class PokemosScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return  Scaffold(
+      backgroundColor: Colors.grey[900],
        appBar: appbarPokemon(),
       body: Container(
         padding: const  EdgeInsets.symmetric(horizontal: 8),
