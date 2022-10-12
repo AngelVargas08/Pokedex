@@ -22,7 +22,7 @@ class DetailsScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-              color: tipo == 'GRASS' ? Colors.green : Colors.blueAccent
+              color: tipo == 'GRASS' ? Colors.green : tipo == 'FIRE'? Colors.redAccent:Colors.blueAccent
         ),
         
         child: Stack(
