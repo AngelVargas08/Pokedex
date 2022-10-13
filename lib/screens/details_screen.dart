@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/widgets/appBar.dart';
 
+import '../themes/colors_pokemon .dart';
+
 
 class DetailsScreen extends StatelessWidget {
   
@@ -22,7 +24,7 @@ class DetailsScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-              color: tipo == 'GRASS' ? Colors.green : tipo == 'FIRE'? Colors.redAccent:Colors.blueAccent
+          color: colorspokemons(tipo)
         ),
         
         child: Stack(
@@ -138,4 +140,6 @@ class DetailsScreen extends StatelessWidget {
       )
     );
   }
+
+  
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/themes/colors_pokemon%20.dart';
 
 class GridViewPokemon extends StatelessWidget {
 
@@ -32,6 +33,7 @@ class GridViewPokemon extends StatelessWidget {
           itemBuilder: (context, index) {
               final pokemon = pokemons[index];
               final type = pokemon.type!;
+              final tipo =type.first.name;
               
              
               
@@ -41,7 +43,7 @@ class GridViewPokemon extends StatelessWidget {
                 padding: const EdgeInsets.all(1.5),
                 child: Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                  color:   Colors.blueAccent,
+                  color:  colorspokemons(tipo),
                   child: Stack(
                     
                     children:  [

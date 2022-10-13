@@ -3,11 +3,16 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/themes/colors_pokemon%20.dart';
 
 AppBar appbarPokemon() {
+  
+      final List<Pokemons> pokemons;
+      
     return AppBar(
       iconTheme: const IconThemeData(
-        color: Colors.black),
+        color: Colors.white),
       actions: [
         IconButton(
           onPressed: (){},
@@ -17,7 +22,7 @@ AppBar appbarPokemon() {
            )
       ],
       elevation: 0,
-      backgroundColor: const Color.fromARGB(0, 238, 238, 238),
+      backgroundColor:  Colors.grey[900],
       title: const Center(
         child:  Image(image: AssetImage('assets/logo.png'),
         width: 150,
