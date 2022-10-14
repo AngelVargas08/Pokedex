@@ -106,9 +106,12 @@ class DetailsScreen extends StatelessWidget {
                             width: double.infinity,
                             height: size.height*0.5,
                             color: Colors.grey[900],
-                            child: Text('asd')
+                            child: Text('asasdadasdas')
+                              
                           ),
+                          
                         ),
+                        
                   ),
                   
 

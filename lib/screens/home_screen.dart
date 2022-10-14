@@ -21,7 +21,21 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+                print('drawe');
+              Drawer(
+                child: ListView(
+                  children: [
+                    DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Colors.blue
+                      ),
+                      child: Text('titulo')
+                      )
+                  ],
+                ),
+              );
+            }, 
             icon: const Icon(Icons.settings_sharp, size: 30,)
             )
         ],
