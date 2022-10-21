@@ -106,22 +106,69 @@ class DetailsScreen extends StatelessWidget {
                             width: double.infinity,
                             height: size.height*0.5,
                             color: Colors.grey[900],
-                            child: Text('asasdadasdas')
+                            child: Column(
+                              children: [
+                                const SizedBox(height: 50,),
+                                DefaultTabController(
+                                  length: 4, 
+                                  child: Column(
+                                    children:  [
+                                       const TabBar(
+                                        indicatorColor: Colors.white,
+                                        tabs: [
+                                          Tab(child: Text('About', style: TextStyle(color:Colors.white),),),
+                                          Tab(text: 'Base Stats'),
+                                          Tab(text: 'Evolution'),
+                                          Tab(text: 'Moves'),
+                                        ]
+                                        ),
+
+                                        Container(
+                                          height: 200,
+                                          decoration: const BoxDecoration(
+                                            border: Border(top: BorderSide(color: Colors.white,width: 0.5))
+                                          ),
+                                          child: TabBarView(
+                                            children: [
+                                              Container(
+                                                child: Center(
+                                                  child: Text(pokemon.avgSpawns.toString(), style: TextStyle(color: Colors.white),),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: Text('Display Tab 2'),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: Text('Display Tab 3'),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: Center(
+                                                  child: Text('Display Tab 4'),
+                                                ),
+                                              ),
+                                            ],
+                                            ),
+                                        )
+                                    ],
+                                  ),
+                                  
+                                  )
+                              ],
+                            )
                               
                           ),
                           
                         ),
                         
                   ),
-                  
 
-
-
-
-                  
                  Positioned(
                   width: size.width*1,
-                  top: size.height*0.2,
+                  top: size.height*0.18,
                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -130,7 +177,7 @@ class DetailsScreen extends StatelessWidget {
                        child: FadeInImage(
                        placeholder:const AssetImage('assets/logo.png'),
                        image: NetworkImage(pokemon.img.toString()),
-                       width: size.width*0.6, 
+                       width: size.width*0.5, 
                        fit: BoxFit.cover,
                         ),
                       ),
