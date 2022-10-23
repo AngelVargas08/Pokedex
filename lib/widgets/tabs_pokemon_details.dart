@@ -217,12 +217,15 @@ class TabPokemon extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: prevEvolution!.map((e) {
-                                return Text(
-                                  e.name,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                                return Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    e.name,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 );
                               }).toList(),
                             ),
@@ -231,14 +234,18 @@ class TabPokemon extends StatelessWidget {
                           children: [
                             Column(
                               children: nextEvolution!.map((e) {
-                                return Text(
-                                  e.name,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                                return Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    e.name,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 );
                               }).toList(),
+                              
                             )
                           ],
                         ),
