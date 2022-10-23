@@ -1,10 +1,9 @@
-// ignore: file_names
 
-
+// ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
-import 'package:pokedex/themes/colors_pokemon%20.dart';
+
 
 AppBar appbarPokemon() {
   

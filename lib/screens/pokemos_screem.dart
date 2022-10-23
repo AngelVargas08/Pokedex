@@ -12,7 +12,9 @@ class PokemosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final pokemonProvider = Provider.of<PokemonProvider>(context);
+    
+    final pokemonProvider = context.watch<PokemonProvider>().onDisplayPokemon;
+
     
 
     final size = MediaQuery.of(context).size;
@@ -27,7 +29,7 @@ class PokemosScreen extends StatelessWidget {
           children:  [
               const SizedBox(height: 15,),
                 GridViewPokemon(size: size, 
-                pokemons: pokemonProvider.onDisplayPokemon,
+                pokemons: pokemonProvider,
                 
                 ) 
           

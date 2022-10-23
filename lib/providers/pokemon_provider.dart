@@ -1,21 +1,16 @@
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedex/models/pokemon.dart';
 
 class PokemonProvider extends ChangeNotifier{
   
-  String _baseUrl = 'raw.githubusercontent.com';
+  final String _baseUrl = 'raw.githubusercontent.com';
 
   List<Pokemons> onDisplayPokemon = [];
 
   PokemonProvider(){
-    print('POkemon provider inicializado');
-
-
-    this.getDisplayPokemon();
+    getDisplayPokemon();
   }
 
 
