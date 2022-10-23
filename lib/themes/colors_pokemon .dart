@@ -10,6 +10,18 @@ import 'package:flutter/material.dart';
                    tipo == 'GROUND'? Colors.indigo : tipo == 'FIGHTING'? Colors.orangeAccent : tipo == 'ROCK'? const Color.fromARGB(255, 66, 66, 66)
             : Colors.blueAccent;
 }
+
+
+class TxtStyles {
+   
+  TxtStyles._();
+
+  static const TextStyle textStyle17 = TextStyle(color: Colors.white, fontSize: 17 );   
+  static const TextStyle textStyleGrey = TextStyle(color: Color.fromARGB(255, 168, 168, 168),fontSize: 17,fontWeight: FontWeight.bold);
+  static const TextStyle textStyleWhite = TextStyle(color: Colors.white, fontSize: 17,fontWeight: FontWeight.bold);
+
+  }
+
  
 
 

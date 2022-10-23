@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/themes/colors_pokemon%20.dart';
 
 class TabPokemon extends StatelessWidget {
   const TabPokemon({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Pokemons pokemon =
-        ModalRoute.of(context)!.settings.arguments as Pokemons;
+    final Pokemons pokemon = ModalRoute.of(context)!.settings.arguments as Pokemons;
     final type = pokemon.weaknesses;
     final nextEvolution = pokemon.nextEvolution;
     final prevEvolution = pokemon.prevEvolution;
@@ -19,123 +19,108 @@ class TabPokemon extends StatelessWidget {
           Tab(
             child: Text(
               'About',
-              style: TextStyle(color: Colors.white, fontSize: 17),
+              style: TxtStyles.textStyle17,
             ),
           ),
           Tab(
             child: Text(
               'Evolution',
-              style: TextStyle(color: Colors.white, fontSize: 17),
+              style: TxtStyles.textStyle17,
             ),
           ),
           Tab(
             child: Text(
               'Moves',
-              style: TextStyle(color: Colors.white, fontSize: 17),
+              style: TxtStyles.textStyle17,
             ),
           ),
         ]),
         Container(
-          height: size.height*0.38,
+          height: size.height * 0.38,
           decoration: const BoxDecoration(
               // color: Colors.amber,
               border: Border(top: BorderSide(color: Colors.white, width: 0.5))),
           child: TabBarView(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 40),
-                    //****Tab About************************************
-                    //****first column************************************
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text(
-                          'Height',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 168, 168, 168),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Weight',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 168, 168, 168),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Candy',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 168, 168, 168),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Egg',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 168, 168, 168),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Weaknesses',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 168, 168, 168),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20 ),
+                //****Tab About************************************
+                //****first column************************************
+                child: Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              'Height',
+                              style: TxtStyles.textStyleGrey,
+                            ),
+                          ),
+                
+                          Expanded(
+                            flex: 2,
+                            child: Text(pokemon.height.toString(),
+                            style: TxtStyles.textStyleWhite),
+                          )
+                        ],
+                      ),
+                
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Text(
+                            'Weight',
+                            style: TxtStyles.textStyleGrey,
+                          ),
+                          Text(pokemon.weight.toString(),
+                          style: TxtStyles.textStyleWhite)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Text(
+                            'Candy',
+                            style: TxtStyles.textStyleGrey,
+                          ),
+                          Text(pokemon.candy.toString(),
+                          style: TxtStyles.textStyleWhite),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Text(
+                            'Egg',
+                            style: TxtStyles.textStyleGrey,
+                          ),
+                          Text(pokemon.egg.toString(),
+                          style: TxtStyles.textStyleWhite),
+                
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Text(
+                            'Weaknesses',
+                            style: TxtStyles.textStyleGrey,
+                          ),
+                          Row(
+                          children: type!.map((e) {
+                        return FittedBox(
+                          child: Text('${e.name}, ',
+                              maxLines: 2, style: TxtStyles.textStyleWhite),
+                        );
+                      }).toList())
+                        ],
+                      ),
+                    ],
                   ),
-                  //****Second column************************************
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, right: 40),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(pokemon.height.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                        Text(pokemon.weight.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                        Text(pokemon.candy.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                        Text(pokemon.egg.toString(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                        Row(
-                            children: type!.map((e) {
-                          return FittedBox(
-                            child: Text('${e.name}, ',
-                                maxLines: 2,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    
-                                    )
-                                    ),
-                          );
-                        }).toList())
-                      ],
-                    ),
-                  )
-                ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -145,42 +130,32 @@ class TabPokemon extends StatelessWidget {
                     //***********Column next/prev evolution************************************
                     //*****************first column************************************
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         if (nextEvolution != null && prevEvolution != null)
-                          Column(
-                            children: const [
-                              Text('Prev Evolution',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 168, 168, 168),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                                      SizedBox(height: 50,),
-                              Text('Next Evolution',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 168, 168, 168),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold))
-                            ],
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: const [
+                                Text('Prev Evolution',
+                                    style: TxtStyles.textStyleGrey),
+                                // SizedBox(height: 50,),
+                                Text('Next Evolution',
+                                    style: TxtStyles.textStyleGrey)
+                              ],
+                            ),
                           ),
                         if (nextEvolution == null)
                           Column(
                             children: const [
                               Text('Prev Evolution',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 168, 168, 168),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold))
+                                  style: TxtStyles.textStyleGrey)
                             ],
                           ),
                         if (prevEvolution == null)
                           Column(
                             children: const [
                               Text('Next Evolution',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 168, 168, 168),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold))
+                                  style: TxtStyles.textStyleGrey)
                             ],
                           )
                       ],
@@ -188,53 +163,47 @@ class TabPokemon extends StatelessWidget {
                   ),
                   //*****************Second column************************************
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       if (nextEvolution != null && prevEvolution != null)
-                        Column(
-                          children: [
-                            Row(
-                              children: prevEvolution.map((e) {
-                                return Text(
-                                  e.name,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                );
-                              }).toList(),
-                            ),
-                              const SizedBox(height: 50,),
-                            Row(
-                              children: nextEvolution.map((e) {
-                                return Text(
-                                  e.name,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                );
-                              }).toList(),
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
+                                children: prevEvolution.map((e) {
+                                  return Text(
+                                    e.name,
+                                    style: TxtStyles.textStyleWhite,
+                                  );
+                                }).toList(),
+                              ),
+                             
+                              Row(
+                                children: nextEvolution.map((e) {
+                                  return Text(
+                                    e.name,
+                                    style: TxtStyles.textStyleWhite
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          ),
                         ),
                       if (nextEvolution == null)
-                        
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: prevEvolution!.map((e) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(15),
-                                  child: Text(
-                                    e.name,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
+                          children: prevEvolution!.map((e) {
+                            return Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                e.name,
+                                style: TxtStyles.textStyleWhite
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       if (prevEvolution == null)
                         Column(
                           children: [
@@ -244,14 +213,10 @@ class TabPokemon extends StatelessWidget {
                                   padding: const EdgeInsets.all(15),
                                   child: Text(
                                     e.name,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                    style: TxtStyles.textStyleWhite
                                   ),
                                 );
                               }).toList(),
-                              
                             )
                           ],
                         ),

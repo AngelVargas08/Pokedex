@@ -53,9 +53,14 @@ class GridViewPokemon extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(pokemon.name.toString(),style:  const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                               
+                              Expanded(
+                                child: Text(pokemon.name.toString(),style:  const TextStyle( 
+                                  overflow: TextOverflow.ellipsis,
+                                  
+                                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                                
+                                ),
                               ),
                               Text('#${pokemon.num}',style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
