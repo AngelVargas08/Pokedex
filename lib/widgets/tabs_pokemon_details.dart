@@ -11,6 +11,7 @@ class TabPokemon extends StatelessWidget {
     final type = pokemon.weaknesses;
     final nextEvolution = pokemon.nextEvolution;
     final prevEvolution = pokemon.prevEvolution;
+    final size = MediaQuery.of(context).size;
 
     return Column(
       children: [
@@ -35,7 +36,7 @@ class TabPokemon extends StatelessWidget {
           ),
         ]),
         Container(
-          height: 350,
+          height: size.height*0.38,
           decoration: const BoxDecoration(
               // color: Colors.amber,
               border: Border(top: BorderSide(color: Colors.white, width: 0.5))),
@@ -120,11 +121,16 @@ class TabPokemon extends StatelessWidget {
                                 fontWeight: FontWeight.bold)),
                         Row(
                             children: type!.map((e) {
-                          return Text('${e.name}, ',
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold));
+                          return FittedBox(
+                            child: Text('${e.name}, ',
+                                maxLines: 2,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    
+                                    )
+                                    ),
+                          );
                         }).toList())
                       ],
                     ),

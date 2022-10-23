@@ -124,7 +124,7 @@ class DetailsScreen extends StatelessWidget {
                         child: FadeInImage(
                           placeholder: const AssetImage('assets/logo.png'),
                           image: NetworkImage(pokemon.img.toString()),
-                          width: size.width * 0.5,
+                          width: size.width * 0.6,
                           fit: BoxFit.cover,
                         ),
                       ),
