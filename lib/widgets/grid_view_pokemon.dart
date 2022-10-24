@@ -30,7 +30,7 @@ class GridViewPokemon extends StatelessWidget {
           final pokemon = pokemons[index];
           final type = pokemon.type!;
           final tipo = type.first.name;
-
+         
           return GestureDetector(
             onTap: () =>
                 Navigator.pushNamed(context, 'details', arguments: pokemon),
@@ -123,22 +123,28 @@ class GridViewPokemon extends StatelessWidget {
                             child: IconButton(
                                 onPressed: () {
                                   if(!myfavorite.contains(pokemon)){
+                                    
                                     context.read<PokemonProvider>().addToFavorite(pokemon);
                                   }else{
+                                    
                                     context.read<PokemonProvider>().removeToFavorite(pokemon);
                                   }
                                 },
-                                 icon: Icon(Icons.favorite_border,
-                                 color: myfavorite.contains(pokemon)?
-                                 Colors.red:
+                                 icon: Icon(myfavorite.contains(pokemon)? Icons.favorite:
+                                 Icons.favorite_border,
+                                 ),
+
+                                color: myfavorite.contains(pokemon)?
+                                 Colors.white:
                                  Colors.white,
-                                 size: 30
+                                 iconSize: 30,
+                                
                                  ),
 
                                  
                                  ),
                           ),
-                        )
+                        
 
                     ],
                   )),
