@@ -21,12 +21,14 @@ class FavoritesScreen extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: GridViewPokemon(size: size, pokemons: myfavorite),
-            )],
-        ));
+        body: Container(
+          padding: const  EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+          child: Column(
+            children: [
+              GridViewPokemon(size: size, pokemons: myfavorite),
+            ],
+          ),
+        )
+        );
   }
 }
