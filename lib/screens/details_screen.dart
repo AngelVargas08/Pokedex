@@ -1,7 +1,10 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
-import 'package:pokedex/widgets/appBar.dart';
+import 'package:pokedex/providers/pokemon_provider.dart';
+import 'package:pokedex/screens/favorites_screen.dart';
 import 'package:pokedex/widgets/tabs_pokemon_details.dart';
+import 'package:provider/provider.dart';
 
 import '../themes/colors_pokemon .dart';
 
@@ -15,12 +18,47 @@ class DetailsScreen extends StatelessWidget {
     final Pokemons pokemon =
         ModalRoute.of(context)!.settings.arguments as Pokemons;
 
+        var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
+
     final type = pokemon.type!;
     final tipo = type.first.name;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        appBar: appbarPokemon(),
+        appBar: AppBar(
+        elevation: 0,
+        backgroundColor: colorspokemons(tipo),
+        title: const Center(
+        child:  Image(image: AssetImage('assets/logo.png'),
+        width: 150,
+        fit: BoxFit.cover,
+       
+        ),
+      ),
+          actions: [
+            Badge(
+              position: BadgePosition.topEnd(end: 5, top: 5),
+              badgeContent:  Text(myfavorite.length.toString(), 
+              style: const TextStyle(color: Colors.white
+              ),
+              ),
+              badgeColor: Colors.redAccent,
+              child: IconButton(
+                onPressed:() {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const FavoritesScreen(),));
+                }, 
+                 icon: const Icon(
+                  Icons.favorite,
+                   color: Colors.white, 
+                   size: 35,)
+                 ),
+            )
+          ],
+          
+
+      ),
+
         body: Container(
             width: double.infinity,
             decoration: BoxDecoration(color: colorspokemons(tipo)),
@@ -115,7 +153,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 Positioned(
                   width: size.width * 1,
-                  top: size.height * 0.18,
+                  top: size.height * 0.20,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -124,7 +162,7 @@ class DetailsScreen extends StatelessWidget {
                         child: FadeInImage(
                           placeholder: const AssetImage('assets/logo.png'),
                           image: NetworkImage(pokemon.img.toString()),
-                          width: size.width * 0.6,
+                          width: size.width * 0.5,
                           fit: BoxFit.cover,
                         ),
                       ),

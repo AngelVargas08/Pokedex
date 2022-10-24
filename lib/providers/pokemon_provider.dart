@@ -8,6 +8,9 @@ class PokemonProvider extends ChangeNotifier{
   final String _baseUrl = 'raw.githubusercontent.com';
 
   List<Pokemons> onDisplayPokemon = [];
+  List<Pokemons> _favoritePokemos = [];
+  List<Pokemons> get favoritePokemons => _favoritePokemos;
+
 
   PokemonProvider(){
     getDisplayPokemon();
@@ -27,6 +30,16 @@ class PokemonProvider extends ChangeNotifier{
   onDisplayPokemon = pokemonResponse.pokemon;
   
   notifyListeners();
+  }
+
+  void addToFavorite(Pokemons pokemons){
+    _favoritePokemos.add(pokemons);
+    notifyListeners();
+  }
+
+  void removeToFavorite(Pokemons pokemons){
+    _favoritePokemos.remove(pokemons);
+    notifyListeners();
   }
 
 }

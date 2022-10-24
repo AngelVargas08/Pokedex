@@ -54,6 +54,7 @@ class TabPokemon extends StatelessWidget {
                         
                         children: [
                           const Expanded(
+                          flex: 2,
                             child: Text(
                               'Height',
                               style: TxtStyles.textStyleGrey,
@@ -61,7 +62,7 @@ class TabPokemon extends StatelessWidget {
                           ),
                 
                           Expanded(
-                            flex: 2,
+                            
                             child: Text(pokemon.height.toString(),
                             style: TxtStyles.textStyleWhite),
                           )
