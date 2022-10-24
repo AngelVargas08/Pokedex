@@ -19,6 +19,8 @@ class GridViewPokemon extends StatelessWidget {
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
     return Expanded(
       child: GridView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.2,

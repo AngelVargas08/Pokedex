@@ -24,7 +24,7 @@ class Card2Screen extends StatelessWidget {
     return SizedBox(
       width: size.width*0.45,
       height: 120,
-      child: GestureDetector(
+      child: InkWell(
         onTap: () =>Navigator.pushNamed(context, route) ,
         child: Card(
            

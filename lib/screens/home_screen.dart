@@ -69,17 +69,17 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15,),
               const TextFieldHome(),
               const SizedBox(height: 25,),
-              const Card1Screen(arg: 'Pokémon', route: 'pokemon', colorText:Color.fromARGB(255, 115, 182, 117), ),
+              const Card1Screen(arg: 'Pokémon', route: 'pokemon', colorText:Colors.green , ),
               const SizedBox(height: 15,),
               Row(
                 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   
-                   Card2Screen(name: 'Items', colorsText: Color.fromARGB(255, 223, 117, 117), 
+                   Card2Screen(name: 'Items', colorsText: Colors.redAccent, 
                                route: 'items',),
                    SizedBox(width: 5,),
-                   Card2Screen(name: 'Moves', colorsText: Color.fromARGB(255, 73, 145, 253), 
+                   Card2Screen(name: 'Moves', colorsText: Colors.blueAccent, 
                                 route: 'moves',),
                 ],
               ),
@@ -87,10 +87,10 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                   Card2Screen(name: 'Types', colorsText: Color.fromARGB(255, 245, 200, 0),
+                   Card2Screen(name: 'Types', colorsText: Color.fromARGB(255, 255, 187, 0),
                                route: 'types',),
                    SizedBox(width: 5,),
-                   Card2Screen(name: 'Favorite', colorsText: Color.fromARGB(255, 170, 95, 184),
+                   Card2Screen(name: 'Favorite', colorsText: Colors.deepPurple,
                               route: 'favorite',),
                 ],
               ),

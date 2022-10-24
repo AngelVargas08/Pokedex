@@ -22,6 +22,13 @@ class TxtStyles {
 
   }
 
+
+  class ThemesPokemon {
+    ThemesPokemon._();
+
+    static  Color? darkmode = Colors.grey[900];
+  }
+
  
 
 

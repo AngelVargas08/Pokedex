@@ -32,12 +32,12 @@ class PokemonProvider extends ChangeNotifier{
   notifyListeners();
   }
 
-  void addToFavorite(Pokemons pokemons){
+  void addToFavorite(Pokemons pokemons)async{
     _favoritePokemos.add(pokemons);
     notifyListeners();
   }
 
-  void removeToFavorite(Pokemons pokemons){
+  void removeToFavorite(Pokemons pokemons)async{
     _favoritePokemos.remove(pokemons);
     notifyListeners();
   }

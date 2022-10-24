@@ -26,7 +26,8 @@ class Card1Screen extends StatelessWidget {
 
       width: size.width*0.9,
       height: 140,
-        child: GestureDetector(
+        child: InkWell(
+        
           onTap: () => Navigator.pushNamed(context, route),
           child: Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
