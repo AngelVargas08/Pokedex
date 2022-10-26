@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:pokedex/screens/screens.dart';
+import 'package:pokedex/widgets/alert_search.dart';
 import 'package:provider/provider.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
 
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         'moves'   :(_) => const MovesScreen(),
         'types'   :(_) => const TypesScreen(),
         'details'   :(_) => const DetailsScreen(),
+        
       },
      
     );
