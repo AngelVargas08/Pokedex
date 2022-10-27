@@ -18,7 +18,7 @@ class TextFieldHome extends StatelessWidget {
           color: Colors.black54,
           ),
           width: double.infinity,
-          height: 50,
+          height: 55,
           
       
           child: Padding(

@@ -10,6 +10,7 @@ class PokemonProvider extends ChangeNotifier{
   List<Pokemons> onDisplayPokemon = [];
   List<Pokemons> _favoritePokemos = [];
   List<Pokemons> get favoritePokemons => _favoritePokemos;
+ 
 
 
   PokemonProvider(){
@@ -28,6 +29,7 @@ class PokemonProvider extends ChangeNotifier{
  
 
   onDisplayPokemon = pokemonResponse.pokemon;
+ 
   
   notifyListeners();
   }
