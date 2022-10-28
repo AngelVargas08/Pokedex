@@ -2,11 +2,13 @@
 
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/providers/pokemon_provider.dart';
-import 'package:pokedex/screens/favorites_screen.dart';
-import 'package:pokedex/themes/colors_pokemon%20.dart';
-import 'package:pokedex/widgets/widgets.dart';
+import 'package:pokedex/domain/providers/pokemon_provider.dart';
+import 'package:pokedex/ui/screens/screens.dart';
+import 'package:pokedex/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+import '../../utils/themes/colors_pokemon .dart';
+
+
 
 class PokemosScreen extends StatelessWidget {
    

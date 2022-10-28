@@ -2,11 +2,14 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
-import 'package:pokedex/screens/favorites_screen.dart';
-import 'package:pokedex/widgets/tabs_pokemon_details.dart';
+import 'package:pokedex/ui/screens/screens.dart';
+import 'package:pokedex/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-import '../themes/colors_pokemon .dart';
+import '../../utils/themes/colors_pokemon .dart';
+
+
+
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({

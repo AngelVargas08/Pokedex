@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:pokedex/screens/screens.dart';
-import 'package:pokedex/widgets/alert_search.dart';
+import 'package:pokedex/ui/screens/screens.dart';
 import 'package:provider/provider.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
 

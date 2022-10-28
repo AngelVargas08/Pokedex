@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
-import 'package:pokedex/themes/colors_pokemon%20.dart';
-import 'package:pokedex/widgets/grid_view_pokemon.dart';
+import 'package:pokedex/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+
+import '../../utils/themes/colors_pokemon .dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({Key? key}) : super(key: key);

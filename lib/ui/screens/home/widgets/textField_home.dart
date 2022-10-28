@@ -1,8 +1,10 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:pokedex/themes/colors_pokemon%20.dart';
-import 'package:pokedex/widgets/alert_search.dart';
+
+import 'package:pokedex/ui/screens/home/widgets/alert_search.dart';
+import '../../../utils/themes/colors_pokemon .dart';
+
 
 class TextFieldHome extends StatelessWidget {
   const TextFieldHome({super.key});
