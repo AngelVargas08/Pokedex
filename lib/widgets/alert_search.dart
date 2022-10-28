@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
 import 'package:pokedex/themes/colors_pokemon%20.dart';
@@ -10,8 +9,6 @@ import 'package:provider/provider.dart';
 Future<void> searchAlert(BuildContext context) async {
 
   final pokemons = context.read<PokemonProvider>().onDisplayPokemon;
-  final listsearch = context.read<PokemonProvider>().listSearch;
-  
   showDialog(
       barrierDismissible: false,
       context: context,

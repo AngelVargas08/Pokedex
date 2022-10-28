@@ -115,12 +115,12 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 Positioned(
                   width: size.width * 1,
-                  top: size.height * 0.22,
+                  top: size.height * 0.18,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 200,
+                        width: 250,
                         child: Opacity(
                             opacity: 0.4,
                             child: Image.asset('assets/pokeball.png')),
