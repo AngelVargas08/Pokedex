@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/domain/models/pokemon.dart';
 import '../../../utils/themes/colors_pokemon .dart';
 
 class TabPokemon extends StatelessWidget {

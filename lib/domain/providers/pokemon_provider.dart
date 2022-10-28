@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokedex/models/pokemon.dart';
+import 'package:pokedex/domain/models/pokemon.dart';
+
 
 class PokemonProvider extends ChangeNotifier{
   
