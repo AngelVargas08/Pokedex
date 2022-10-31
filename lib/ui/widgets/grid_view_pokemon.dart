@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../utils/themes/colors_pokemon .dart';
 
-class GridViewPokemon extends StatelessWidget {
+class GridViewPokemon extends StatefulWidget {
   final List<Pokemon> pokemons;
   final Size size;
 
@@ -16,20 +16,50 @@ class GridViewPokemon extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<GridViewPokemon> createState() => _GridViewPokemonState();
+}
+
+class _GridViewPokemonState extends State<GridViewPokemon> {
+
+  final ScrollController scrollController = new ScrollController();
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    scrollController.addListener(() {
+      if(scrollController.position.pixels>=scrollController.position.maxScrollExtent - 150){
+           // context.read<PokemonProvider>().getDisplayPokemon(2);
+            print('easd');
+      }
+     
+    });
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
     var isloading = context.read<PokemonProvider>().isloading;
     return Expanded(
       child: GridView.builder(
+        controller: scrollController,
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.2,
         ),
-        itemCount: pokemons.length,
+        itemCount: widget.pokemons.length,
         itemBuilder: (context, index) {
-          final pokemon = pokemons[index];
+          final pokemon = widget.pokemons[index];
           final type = pokemon.types;
           final tipo = type[0].type.name;
 
@@ -52,7 +82,7 @@ class GridViewPokemon extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                pokemon.name.toString(),
+                                pokemon.name[0].toUpperCase() + pokemon.name.substring(1),
                                 style: const TextStyle(
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: 20,
@@ -87,7 +117,7 @@ class GridViewPokemon extends StatelessWidget {
                                     vertical: 2, horizontal: 5),
                                
                                 child: Text(
-                                  types,
+                                  types[0].toUpperCase() + types.substring(1),
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -102,7 +132,7 @@ class GridViewPokemon extends StatelessWidget {
                           opacity: 0.5,
                           child: Image(
                             image: const AssetImage('assets/pokeball.png'),
-                            width: size.width * 0.28,
+                            width: widget.size.width * 0.28,
                           ),
                         ),
                       ),
@@ -115,7 +145,7 @@ class GridViewPokemon extends StatelessWidget {
                             image: NetworkImage(pokemon
                                 .sprites.other!.officialArtwork.frontDefault
                                 .toString()),
-                            width: size.width * 0.27,
+                            width: widget.size.width * 0.27,
                             fit: BoxFit.cover,
                           ),
                         ),

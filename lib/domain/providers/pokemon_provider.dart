@@ -10,17 +10,21 @@ class PokemonProvider extends ChangeNotifier{
 
   List<Pokemon> onDisplayPokemon = [];
   List<Pokemon> _favoritePokemos = [];
+  
+  int initial=16;
   List<Pokemon> get favoritePokemons => _favoritePokemos;
   bool _isloading = true;
   bool get isloading => _isloading;
-
+  
         
  
 
 
   PokemonProvider(){
-    getDisplayPokemon();
+    getDisplayPokemon(initial);
   }
+  
+  
 
    Future <String> getJsonData(String url) async {
     final response = await http.get(Uri.parse(url));
@@ -31,9 +35,10 @@ class PokemonProvider extends ChangeNotifier{
     }
   }
 
-   getDisplayPokemon() async{
+   getDisplayPokemon(initial) async{
     ///added 10 pokemons to the list
-    for (int i =0; i<16; i++){
+      //int init = 16;
+    for (int i =0; i<initial; i++){
 
       final String jsonData = await getJsonData('$_baseUrl${i+1}');
       
@@ -41,7 +46,7 @@ class PokemonProvider extends ChangeNotifier{
       notifyListeners();
     }
 
-  
+     
     _isloading = false;
     notifyListeners();
   }
@@ -55,5 +60,7 @@ class PokemonProvider extends ChangeNotifier{
     _favoritePokemos.remove(pokemons);
     notifyListeners();
   }
+
+  
 
 }

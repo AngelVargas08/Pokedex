@@ -1,12 +1,12 @@
-import 'package:badges/badges.dart';
+
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
 import 'package:pokedex/domain/models/pokemon.dart';
 import 'package:pokedex/domain/providers/pokemon_provider.dart';
+import 'package:pokedex/ui/screens/details_pokemon/widgets/widgets_details.dart';
 import 'package:pokedex/ui/screens/screens.dart';
-import 'package:pokedex/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'dart:math' as math;
-
 import '../../utils/themes/colors_pokemon .dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -18,6 +18,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Pokemon pokemon =
         ModalRoute.of(context)!.settings.arguments as Pokemon;
+        
 
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
 
@@ -106,7 +107,7 @@ class DetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              pokemon.name.toString(),
+                              pokemon.name[0].toUpperCase() + pokemon.name.substring(1),
                               style: const TextStyle(
                                   fontSize: 50,
                                   fontWeight: FontWeight.bold,
@@ -135,7 +136,8 @@ class DetailsScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 5, vertical: 2),
                                 child: Text(
-                                  e.type.name,
+                                  types[0].toUpperCase() + types.substring(1),
+                                  
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -152,13 +154,9 @@ class DetailsScreen extends StatelessWidget {
                   
                   Positioned.fill(
                     bottom: size.height * 0.23,
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.center,
-                      child: SizedBox(
-                          width: 300,
-                          child: Opacity(
-                              opacity: 0.4,
-                              child: Image.asset('assets/pokeball.png'))),
+                      child: Rotation()
                     ),
                   ),
                   Align(
@@ -199,3 +197,7 @@ class DetailsScreen extends StatelessWidget {
         ));
   }
 }
+
+
+
+
