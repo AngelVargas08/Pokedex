@@ -6,11 +6,15 @@ import 'package:pokedex/domain/models/pokemon.dart';
 
 class PokemonProvider extends ChangeNotifier{
   
-  final String _baseUrl = 'raw.githubusercontent.com';
+  final String _baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
-  List<Pokemons> onDisplayPokemon = [];
-  List<Pokemons> _favoritePokemos = [];
-  List<Pokemons> get favoritePokemons => _favoritePokemos;
+  List<Pokemon> onDisplayPokemon = [];
+  List<Pokemon> _favoritePokemos = [];
+  List<Pokemon> get favoritePokemons => _favoritePokemos;
+  bool _isloading = true;
+  bool get isloading => _isloading;
+
+        
  
 
 
@@ -18,29 +22,36 @@ class PokemonProvider extends ChangeNotifier{
     getDisplayPokemon();
   }
 
-
-  getDisplayPokemon()async{
-    
-    var url =
-      Uri.https(_baseUrl, '/Biuni/PokemonGO-Pokedex/master/pokedex.json', );
-
-
-  final response = await http.get(url);
-  final pokemonResponse = Pokemon.fromJson(response.body);
- 
-
-  onDisplayPokemon = pokemonResponse.pokemon;
- 
-  
-  notifyListeners();
+   Future <String> getJsonData(String url) async {
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200){
+      return response.body;
+    } else {
+      return "Error";
+    }
   }
 
-  void addToFavorite(Pokemons pokemons)async{
+   getDisplayPokemon() async{
+    ///added 10 pokemons to the list
+    for (int i =0; i<16; i++){
+
+      final String jsonData = await getJsonData('$_baseUrl${i+1}');
+      
+      onDisplayPokemon.add(Pokemon.fromJson(jsonData));
+      notifyListeners();
+    }
+
+  
+    _isloading = false;
+    notifyListeners();
+  }
+
+  void addToFavorite(Pokemon pokemons)async{
     _favoritePokemos.add(pokemons);
     notifyListeners();
   }
 
-  void removeToFavorite(Pokemons pokemons)async{
+  void removeToFavorite(Pokemon pokemons)async{
     _favoritePokemos.remove(pokemons);
     notifyListeners();
   }

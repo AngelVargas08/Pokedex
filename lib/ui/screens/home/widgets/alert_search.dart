@@ -57,19 +57,19 @@ Future<void> searchAlert(BuildContext context) async {
                       shrinkWrap: true,
                       itemCount: pokemons.length,
                       itemBuilder: (context, index) {
-                        Pokemons pokemo = pokemons[index];
-                        final type = pokemo.type!;
-                        final tipo = type.first.name;
+                        Pokemon pokemo = pokemons[index];
+                        final type = pokemo.types;
+                        //final tipo = type.first.name;
                         return Card(
                         
-                        color: colorspokemons(tipo),
+                        color: Colors.blueAccent,
                         elevation: 1,
                         child: ListTile(
                           leading: FadeInImage(
                             placeholder: AssetImage('assets/logo.png'), 
-                            image: NetworkImage(pokemo.img.toString(),scale: 0.1)
+                            image: NetworkImage(pokemo.sprites.other!.officialArtwork.frontDefault.toString(),scale: 0.1)
                             ),
-                            trailing: Text(pokemo.num.toString()),
+                            trailing: Text(pokemo.id.toString()),
                           title: Text(pokemo.name.toString()),
                         ),
                       );

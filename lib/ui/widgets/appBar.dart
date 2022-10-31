@@ -9,7 +9,7 @@ import 'package:pokedex/domain/models/pokemon.dart';
 
 AppBar appbarPokemon() {
   
-      final List<Pokemons> pokemons;
+      final List<Pokemon> pokemons;
       
     return AppBar(
       iconTheme: const IconThemeData(

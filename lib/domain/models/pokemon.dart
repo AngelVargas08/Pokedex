@@ -1,155 +1,120 @@
-// To parse this JSON data, do
-//
-//     final pokemon = pokemonFromMap(jsonString);
-
-// ignore_for_file: constant_identifier_names
-
 import 'dart:convert';
 
 class Pokemon {
-    Pokemon({
-        required this.pokemon,
-    });
+  Pokemon({
+    required this.id,
+    required this.name,
+    required this.weight,
+    required this.types,
+    required this.species,
+    required this.sprites,
+  });
 
-    List<Pokemons> pokemon;
+  int id;
+  String name;
+  int weight;
+  List<Type> types;
+  Species species;
+  Sprites sprites;
 
-    factory Pokemon.fromJson(String str) => Pokemon.fromMap(json.decode(str));
+  factory Pokemon.fromJson(String str) => Pokemon.fromMap(json.decode(str));
 
-    factory Pokemon.fromMap(Map<String, dynamic> json) => Pokemon(
-        pokemon: List<Pokemons>.from(json["pokemon"].map((x) => Pokemons.fromMap(x))),
-    );
-
-    
+  factory Pokemon.fromMap(Map<String, dynamic> json) => Pokemon(
+    id: json["id"],
+    name: json["name"],
+    weight: json["weight"],
+    types: List<Type>.from(json["types"].map((x) => Type.fromMap(x))),
+    species: Species.fromMap(json["species"]),
+    sprites: Sprites.fromMap(json["sprites"]),
+  );
 }
 
-class Pokemons {
-    Pokemons({
-        required this.id,
-         this.num,
-         this.name,
-         this.img,
-         this.type,
-         this.height,
-         this.weight,
-         this.candy,
-         this.candyCount,
-                 this.egg,
-         this.spawnChance,
-         this.avgSpawns,
-         this.spawnTime,
-         this.multipliers,
-         this.weaknesses,
-                 this.nextEvolution,
-                 this.prevEvolution,
-    });
+class Type {
+  Type({
+      required this.slot,
+      required this.type,
+  });
 
-    int id;
-    String? num;
-    String? name;
-    String? img;
-    List<Type>? type;
-    String? height;
-    String? weight;
-    String? candy;
-    int? candyCount;
-    Egg? egg;
-    double? spawnChance;
-    double? avgSpawns;
-    String? spawnTime;
-    List<double>? multipliers;
-    List<Type>? weaknesses;
-    List<Evolution>? nextEvolution;
-    List<Evolution>? prevEvolution;
+  int slot;
+  Species type;
 
-    factory Pokemons.fromJson(String str) => Pokemons.fromMap(json.decode(str));
-    
-    factory Pokemons.fromMap(Map<String, dynamic> json) => Pokemons(
-        id: json["id"],
-        num: json["num"],
-        name: json["name"],
-        img: json["img"],
-        type: List<Type>.from(json["type"].map((x) => typeValues.map[x])),
-        height: json["height"],
-        weight: json["weight"],
-        candy: json["candy"],
-        candyCount: json["candy_count"],
-        egg: eggValues.map[json["egg"]],
-        spawnChance: json["spawn_chance"].toDouble(),
-        avgSpawns: json["avg_spawns"].toDouble(),
-        spawnTime: json["spawn_time"],
-        multipliers: json["multipliers"] == null ? null : List<double>.from(json["multipliers"].map((x) => x.toDouble())),
-        weaknesses: List<Type>.from(json["weaknesses"].map((x) => typeValues.map[x])),
-        nextEvolution: json["next_evolution"] == null ? null : List<Evolution>.from(json["next_evolution"].map((x) => Evolution.fromMap(x))),
-        prevEvolution: json["prev_evolution"] == null ? null : List<Evolution>.from(json["prev_evolution"].map((x) => Evolution.fromMap(x))),
-    );
+  factory Type.fromJson(String str) => Type.fromMap(json.decode(str));
 
+  String toJson() => json.encode(toMap());
+
+  factory Type.fromMap(Map<String, dynamic> json) => Type(
+    slot: json["slot"],
+    type: Species.fromMap(json["type"]),
+  );
+
+  Map<String, dynamic> toMap() => {
+    "slot": slot,
+    "type": type.toMap(),
+  };
 }
 
-enum Egg { THE_2_KM, NOT_IN_EGGS, THE_5_KM, THE_10_KM, OMANYTE_CANDY }
+class Species {
+  Species({
+    required this.name,
+    required this.url,
+  });
 
-final eggValues = EnumValues({
-    "Not in Eggs": Egg.NOT_IN_EGGS,
-    "Omanyte Candy": Egg.OMANYTE_CANDY,
-    "10 km": Egg.THE_10_KM,
-    "2 km": Egg.THE_2_KM,
-    "5 km": Egg.THE_5_KM
-});
+  String name;
+  String url;
 
-class Evolution {
-    Evolution({
-        required this.num,
-        required this.name,
-    });
+  factory Species.fromJson(String str) => Species.fromMap(json.decode(str));
 
-    String num;
-    String name;
+  String toJson() => json.encode(toMap());
 
-    factory Evolution.fromJson(String str) => Evolution.fromMap(json.decode(str));
+  factory Species.fromMap(Map<String, dynamic> json) => Species(
+    name: json["name"],
+    url: json["url"],
+  );
 
-    String toJson() => json.encode(toMap());
-
-    factory Evolution.fromMap(Map<String, dynamic> json) => Evolution(
-        num: json["num"],
-        name: json["name"],
-    );
-
-    Map<String, dynamic> toMap() => {
-        "num": num,
-        "name": name,
-    };
+  Map<String, dynamic> toMap() => {
+      "name": name,
+      "url": url,
+  };
 }
 
-enum Type { FIRE, ICE, FLYING, PSYCHIC, WATER, GROUND, ROCK, ELECTRIC, GRASS, FIGHTING, POISON, BUG, FAIRY, GHOST, DARK, STEEL, DRAGON, NORMAL }
+class Sprites {
+  Sprites({
+      required this.other,
+  });
 
-final typeValues = EnumValues({
-    "Bug": Type.BUG,
-    "Dark": Type.DARK,
-    "Dragon": Type.DRAGON,
-    "Electric": Type.ELECTRIC,
-    "Fairy": Type.FAIRY,
-    "Fighting": Type.FIGHTING,
-    "Fire": Type.FIRE,
-    "Flying": Type.FLYING,
-    "Ghost": Type.GHOST,
-    "Grass": Type.GRASS,
-    "Ground": Type.GROUND,
-    "Ice": Type.ICE,
-    "Normal": Type.NORMAL,
-    "Poison": Type.POISON,
-    "Psychic": Type.PSYCHIC,
-    "Rock": Type.ROCK,
-    "Steel": Type.STEEL,
-    "Water": Type.WATER
-});
+  Other? other;
 
-class EnumValues<T> {
-    Map<String, T> map;
-    Map<T, String>? reverseMap;
+  factory Sprites.fromJson(String str) => Sprites.fromMap(json.decode(str));
 
-    EnumValues(this.map);
+  factory Sprites.fromMap(Map<String, dynamic> json) => Sprites(
+      other: json["other"] == null ? null : Other.fromMap(json["other"]),
+  );
+}
 
-    Map<T, String> get reverse {
-        reverseMap ??= map.map((k, v) => MapEntry(v, k));
-        return reverseMap!;
-    }
+class Other {
+  Other({
+      required this.officialArtwork,
+  });
+
+  OfficialArtwork officialArtwork;
+
+  factory Other.fromJson(String str) => Other.fromMap(json.decode(str));
+
+  factory Other.fromMap(Map<String, dynamic> json) => Other(
+      officialArtwork: OfficialArtwork.fromMap(json["official-artwork"]),
+  );
+}
+
+class OfficialArtwork {
+    OfficialArtwork({
+        required this.frontDefault,
+    });
+
+    String frontDefault;
+
+    factory OfficialArtwork.fromJson(String str) => OfficialArtwork.fromMap(json.decode(str));
+
+    factory OfficialArtwork.fromMap(Map<String, dynamic> json) => OfficialArtwork(
+        frontDefault: json["front_default"],
+    );
 }

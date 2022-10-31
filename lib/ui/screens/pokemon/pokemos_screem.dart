@@ -20,6 +20,7 @@ class PokemosScreen extends StatelessWidget {
     
     var pokemonProvider = context.watch<PokemonProvider>().onDisplayPokemon;
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
+    var isloading = context.read<PokemonProvider>().isloading;
 
     
 
@@ -65,16 +66,29 @@ class PokemosScreen extends StatelessWidget {
         child: Column( 
           
           children:  [
-              
+                if(isloading == true)
+                const Expanded(
+                  child:SizedBox(
+                  
+                  height: 100,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      
+                      color: Colors.purple,
+                    ),
+                  ),
+                ))
+                
+                else
                 GridViewPokemon(size: size, 
                 pokemons: pokemonProvider,
                 
-                ) 
+                ), 
           
           ],
         
         ),
-      )
+      ), 
     );
   }
 

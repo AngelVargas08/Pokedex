@@ -24,19 +24,6 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: (){
-                
-              Drawer(
-                child: ListView(
-                  children: const [
-                    DrawerHeader(
-                      decoration: BoxDecoration(
-                        color: Colors.blue
-                      ),
-                      child: Text('titulo')
-                      )
-                  ],
-                ),
-              );
             }, 
             icon: const Icon(Icons.settings_sharp, size: 30,)
             )
@@ -72,17 +59,17 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15,),
               const TextFieldHome(),
               const SizedBox(height: 25,),
-              const Card1Screen(arg: 'Pokémon', route: 'pokemon', colorText:Colors.green , ),
+              const Card1Screen(arg: 'Pokémon', route: 'pokemon', colorText:Color(0xFF62B957) , ),
               const SizedBox(height: 15,),
               Row(
                 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   
-                   Card2Screen(name: 'Items', colorsText: Colors.redAccent, 
+                   Card2Screen(name: 'Items', colorsText: Color(0xFFFD7D24), 
                                route: 'items',),
                    SizedBox(width: 5,),
-                   Card2Screen(name: 'Moves', colorsText: Colors.blueAccent, 
+                   Card2Screen(name: 'Moves', colorsText: Color(0xFF4A90DA), 
                                 route: 'moves',),
                 ],
               ),
@@ -90,10 +77,10 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                   Card2Screen(name: 'Types', colorsText: Color.fromARGB(255, 255, 187, 0),
+                   Card2Screen(name: 'Types', colorsText: Color(0xFFEED535),
                                route: 'types',),
                    SizedBox(width: 5,),
-                   Card2Screen(name: 'Favorite', colorsText: Colors.deepPurple,
+                   Card2Screen(name: 'Favorite', colorsText:  Color(0xFFA552CC),
                               route: 'favorite',),
                 ],
               ),

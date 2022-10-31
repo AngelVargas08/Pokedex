@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../utils/themes/colors_pokemon .dart';
 
 class GridViewPokemon extends StatelessWidget {
-  final List<Pokemons> pokemons;
+  final List<Pokemon> pokemons;
   final Size size;
 
   const GridViewPokemon({
@@ -18,6 +18,7 @@ class GridViewPokemon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
+    var isloading = context.read<PokemonProvider>().isloading;
     return Expanded(
       child: GridView.builder(
         scrollDirection: Axis.vertical,
@@ -29,9 +30,9 @@ class GridViewPokemon extends StatelessWidget {
         itemCount: pokemons.length,
         itemBuilder: (context, index) {
           final pokemon = pokemons[index];
-          final type = pokemon.type!;
-          final tipo = type.first.name;
-         
+          final type = pokemon.types;
+          final tipo = type[0].type.name;
+
           return GestureDetector(
             onTap: () =>
                 Navigator.pushNamed(context, 'details', arguments: pokemon),
@@ -40,7 +41,7 @@ class GridViewPokemon extends StatelessWidget {
               child: Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18)),
-                  color: colorspokemons(tipo),
+                  color: colorspokemons(tipo.toString()),
                   child: Stack(
                     children: [
                       Padding(
@@ -60,7 +61,7 @@ class GridViewPokemon extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '#${pokemon.num}',
+                              '#${pokemon.id}',
                               style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -75,22 +76,23 @@ class GridViewPokemon extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: type.map((e) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(vertical: 2),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 2, horizontal: 5),
-                                  color: Colors.white30,
-                                  child: Text(
-                                    e.name,
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13),
-                                  )),
-                            );
+                            final types = e.type.name;
+                            return Container(
+                              decoration: BoxDecoration( borderRadius: BorderRadius.circular(10),
+                               color: colorstypes(types),
+                              ),
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 2),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 2, horizontal: 5),
+                               
+                                child: Text(
+                                  types,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
+                                ));
                           }).toList(),
                         ),
                       ),
@@ -110,43 +112,42 @@ class GridViewPokemon extends StatelessWidget {
                           tag: pokemon.id,
                           child: FadeInImage(
                             placeholder: const AssetImage('assets/logo.png'),
-                            image: NetworkImage(pokemon.img.toString()),
+                            image: NetworkImage(pokemon
+                                .sprites.other!.officialArtwork.frontDefault
+                                .toString()),
                             width: size.width * 0.27,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
-
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: IconButton(
-                                onPressed: () {
-                                  if(!myfavorite.contains(pokemon)){
-                                    
-                                    context.read<PokemonProvider>().addToFavorite(pokemon);
-                                  }else{
-                                    
-                                    context.read<PokemonProvider>().removeToFavorite(pokemon);
-                                  }
-                                },
-                                 icon: Icon(myfavorite.contains(pokemon)? Icons.favorite:
-                                 Icons.favorite_border,
-                                 ),
-
-                                color: myfavorite.contains(pokemon)?
-                                 Colors.white:
-                                 Colors.white,
-                                 iconSize: 30,
-                                
-                                 ),
-
-                                 
-                                 ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: IconButton(
+                            onPressed: () {
+                              if (!myfavorite.contains(pokemon)) {
+                                context
+                                    .read<PokemonProvider>()
+                                    .addToFavorite(pokemon);
+                              } else {
+                                context
+                                    .read<PokemonProvider>()
+                                    .removeToFavorite(pokemon);
+                              }
+                            },
+                            icon: Icon(
+                              myfavorite.contains(pokemon)
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                            ),
+                            color: myfavorite.contains(pokemon)
+                                ? Colors.white
+                                : Colors.white,
+                            iconSize: 30,
                           ),
-                        
-
+                        ),
+                      ),
                     ],
                   )),
             ),
