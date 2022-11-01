@@ -30,8 +30,8 @@ class _GridViewPokemonState extends State<GridViewPokemon> {
 
     scrollController.addListener(() {
       if(scrollController.position.pixels>=scrollController.position.maxScrollExtent - 150){
-           // context.read<PokemonProvider>().getDisplayPokemon(2);
-            print('easd');
+            context.read<PokemonProvider>().addPokemonList();
+            print('controller');
       }
      
     });

@@ -12,16 +12,20 @@ class PokemonProvider extends ChangeNotifier{
   List<Pokemon> _favoritePokemos = [];
   
   int initial=16;
+  int i = 0;
+      int x = 0;
   List<Pokemon> get favoritePokemons => _favoritePokemos;
   bool _isloading = true;
   bool get isloading => _isloading;
+
   
         
  
 
 
   PokemonProvider(){
-    getDisplayPokemon(initial);
+    getDisplayPokemon();
+    print('Variable inicial'+initial.toString());
   }
   
   
@@ -35,20 +39,30 @@ class PokemonProvider extends ChangeNotifier{
     }
   }
 
-   getDisplayPokemon(initial) async{
+   getDisplayPokemon() async{
     ///added 10 pokemons to the list
-      //int init = 16;
-    for (int i =0; i<initial; i++){
-
-      final String jsonData = await getJsonData('$_baseUrl${i+1}');
+    
       
+    for ( i ; i<initial; i++){
+      final String jsonData = await getJsonData('$_baseUrl${i+1}');
+      x = i+1;
       onDisplayPokemon.add(Pokemon.fromJson(jsonData));
       notifyListeners();
     }
+      i=x;
+      print('variable i {$i}');
 
-     
     _isloading = false;
     notifyListeners();
+  }
+
+
+  void addPokemonList()async{
+     print('Agregando '+initial.toString());
+      initial +=16;
+      getDisplayPokemon();
+      notifyListeners();
+      
   }
 
   void addToFavorite(Pokemon pokemons)async{
