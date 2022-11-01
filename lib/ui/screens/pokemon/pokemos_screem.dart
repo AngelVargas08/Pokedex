@@ -66,7 +66,7 @@ class PokemosScreen extends StatelessWidget {
         child: Column( 
           
           children:  [
-                if(isloading == true)
+                if(isloading == false)
                 const Expanded(
                   child:SizedBox(
                   
