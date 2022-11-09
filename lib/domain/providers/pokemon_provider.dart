@@ -5,19 +5,19 @@ import 'package:pokedex/domain/models/pokemon.dart';
 class PokemonProvider extends ChangeNotifier {
   final String _baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
-  List<Pokemon> onDisplayPokemon = [];
-  List<Pokemon> _favoritePokemos = [];
-
   int initial = 16;
   int i = 0;
   int x = 0;
+  List<Pokemon> onDisplayPokemon = [];
+  List<Pokemon> _favoritePokemos = [];
   List<Pokemon> get favoritePokemons => _favoritePokemos;
   bool _isloading = false;
   bool get isloading => _isloading;
+  bool _requestApi = false;
+  bool get requestApi => _requestApi;
   bool isloadinPagination = false;
   int totalpages = 0;
   int currentPage = 0;
-
 
   PokemonProvider() {
     getDisplayPokemon();
@@ -34,23 +34,40 @@ class PokemonProvider extends ChangeNotifier {
 
   getDisplayPokemon() async {
     ///added x pokemons to the list
-
     for (i; i < initial; i++) {
       final String jsonData = await getJsonData('$_baseUrl${i + 1}');
-      x = i + 1;
+      x++;
       onDisplayPokemon.add(Pokemon.fromJson(jsonData));
       notifyListeners();
     }
-    i = x;
+
     _isloading = true;
-    totalpages = 5;
-    currentPage = 1;
+    totalpages = 80;
+    currentPage = 0;
     isloadinPagination = currentPage < totalpages;
     notifyListeners();
   }
 
+  void loadNextpage() async {
+    if (_requestApi) {
+      return;
+    }
+    _requestApi = true;
+    currentPage++;
+    if (currentPage < totalpages) {
+      for (i = x; i < x + 10; i++) {
+        final String jsonData = await getJsonData('$_baseUrl${i + 1}');
+        onDisplayPokemon.add(Pokemon.fromJson(jsonData));
+        notifyListeners();
+      }
+    }
+    isloadinPagination = currentPage < totalpages;
+    _requestApi = false;
+    x = x + 10;
+    notifyListeners();
+  }
+
   void addPokemonList() async {
-   // initial += 16;
     getDisplayPokemon();
     notifyListeners();
   }

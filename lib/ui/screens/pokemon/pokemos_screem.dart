@@ -81,7 +81,7 @@ class PokemosScreen extends StatelessWidget {
                 
                 else
                 GridViewPokemon(size: size, 
-                pokemons: pokemonProvider,
+                //pokemons: pokemonProvider,
                 
                 ), 
           
