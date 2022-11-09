@@ -9,7 +9,7 @@ class PokemonProvider extends ChangeNotifier {
   int i = 0;
   int x = 0;
   List<Pokemon> onDisplayPokemon = [];
-  List<Pokemon> _favoritePokemos = [];
+  final List<Pokemon> _favoritePokemos = [];
   List<Pokemon> get favoritePokemons => _favoritePokemos;
   bool _isloading = false;
   bool get isloading => _isloading;

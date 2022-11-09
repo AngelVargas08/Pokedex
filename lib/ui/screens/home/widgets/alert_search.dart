@@ -3,8 +3,6 @@ import 'package:pokedex/domain/models/pokemon.dart';
 import 'package:pokedex/domain/providers/pokemon_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../utils/themes/colors_pokemon .dart';
-
 
 
 Future<void> searchAlert(BuildContext context) async {
@@ -58,7 +56,6 @@ Future<void> searchAlert(BuildContext context) async {
                       itemCount: pokemons.length,
                       itemBuilder: (context, index) {
                         Pokemon pokemo = pokemons[index];
-                        final type = pokemo.types;
                         //final tipo = type.first.name;
                         return Card(
                         

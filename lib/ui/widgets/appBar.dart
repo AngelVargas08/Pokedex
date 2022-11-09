@@ -17,7 +17,7 @@ AppBar appbarPokemon() {
       actions: [
         Badge(
               position: BadgePosition.topEnd(end: 5, top: 5),
-              badgeContent:  Text('0', 
+              badgeContent:  const Text('0', 
               style: TextStyle(color: Colors.white
               ),
               ),

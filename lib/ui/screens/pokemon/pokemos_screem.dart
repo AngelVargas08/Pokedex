@@ -18,7 +18,6 @@ class PokemosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     
-    var pokemonProvider = context.watch<PokemonProvider>().onDisplayPokemon;
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
     var isloading = context.read<PokemonProvider>().isloading;
 
