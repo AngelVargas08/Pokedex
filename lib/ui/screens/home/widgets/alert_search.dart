@@ -63,7 +63,7 @@ Future<void> searchAlert(BuildContext context) async {
                         elevation: 1,
                         child: ListTile(
                           leading: FadeInImage(
-                            placeholder: AssetImage('assets/logo.png'), 
+                            placeholder: const AssetImage('assets/logo.png'), 
                             image: NetworkImage(pokemo.sprites.other!.officialArtwork.frontDefault.toString(),scale: 0.1)
                             ),
                             trailing: Text(pokemo.id.toString()),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/domain/models/pokemon.dart';
 import 'package:pokedex/domain/providers/pokemon_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +21,7 @@ class _GridViewPokemonState extends State<GridViewPokemon> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     _controller = ScrollController();
     _controller.addListener(_onScrollUpdade);
@@ -30,7 +29,6 @@ class _GridViewPokemonState extends State<GridViewPokemon> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -155,6 +153,7 @@ class _GridViewPokemonState extends State<GridViewPokemon> {
                                     .sprites.other!.officialArtwork.frontDefault
                                     .toString()),
                                 width: widget.size.width * 0.27,
+                                
                                 fit: BoxFit.cover,
                               ),
                             ),

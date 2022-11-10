@@ -17,12 +17,9 @@ class PokemosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    
     var myfavorite = context.watch<PokemonProvider>().favoritePokemons;
     var isloading = context.read<PokemonProvider>().isloading;
-
-    
-
+ 
     final size = MediaQuery.of(context).size;
 
     return  Scaffold(
